@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  api:
+    # Constrói a imagem a partir do Dockerfile na pasta atual (.)
+    build: .
+    # Adiciona um nome fixo para o contêiner para facilitar a referência
+    container_name: gestao-escolar-api
+    # Mapeia a porta 8000 do host para a porta 8000 do contêiner
+    ports:
+      - "8000:8000"
+    # Monta o diretório atual no diretório /app do contêiner.
+    # Isso permite o live-reloading do código e persiste o banco de dados (escola.db) no seu computador.
+    volumes:
+      - .:/app
+    # Sobrescreve o CMD do Dockerfile para adicionar a flag --reload, ideal para desenvolvimento.
